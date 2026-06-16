@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BGMI PRO SENSITIVITY — Nothing 3a</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep:    #040810;
+    --bg-panel:   #080f1c;
+    --bg-card:    #0c1526;
+    --accent:     #00e5ff;
+    --accent2:    #ff4500;
+    --gold:       #ffd700;
+    --green:      #39ff14;
+    --border:     rgba(0,229,255,0.18);
+    --text:       #c8dff0;
+    --muted:      #5a7a99;
+    --glow:       0 0 16px rgba(0,229,255,0.35);
+    --glow2:      0 0 16px rgba(255,69,0,0.4);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse 80% 40% at 50% -10%, rgba(0,229,255,0.07) 0%, transparent 70%),
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(0,229,255,0.03) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,229,255,0.03) 60px);
+  }
+
+  /* ── SCANLINES overlay ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 999;
+    background: repeating-linear-gradient(to bottom, transparent 0px, transparent 3px, rgba(0,0,0,0.08) 4px);
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 56px 24px 40px;
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  header::after {
+    content: '';
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 320px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    box-shadow: var(--glow);
+  }
+  .header-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+  h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(0,229,255,0.5), 0 0 60px rgba(0,229,255,0.2);
+  }
+  h1 span { color: var(--accent); }
+  .header-sub {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    font-family: 'Share Tech Mono', monospace;
+  }
+  .tags {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+    margin-top: 20px;
+  }
+  .tag {
+    background: rgba(0,229,255,0.07);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    padding: 4px 12px;
+    letter-spacing: 1px;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  }
+
+  /* ── DEVICE CARD ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 20px 60px; }
+
+  .device-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  }
+  .device-card::before {
+    content: 'DEVICE PROFILE';
+    position: absolute; top: -10px; left: 24px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    color: var(--accent); background: var(--bg-deep);
+    padding: 0 8px;
+  }
+  .device-card h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 22px; font-weight: 700;
+    color: #fff; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .device-card h2::before { content: '◈'; color: var(--accent); }
+  .device-specs {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;
+  }
+  .spec-item {
+    background: rgba(0,229,255,0.04);
+    border-left: 2px solid var(--accent);
+    padding: 10px 14px;
+  }
+  .spec-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; color: var(--muted);
+    text-transform: uppercase; margin-bottom: 4px;
+  }
+  .spec-value { font-size: 14px; color: var(--text); font-weight: 600; }
+  .insight-box {
+    margin-top: 20px;
+    background: rgba(255,69,0,0.07);
+    border: 1px solid rgba(255,69,0,0.25);
+    border-left: 3px solid var(--accent2);
+    padding: 14px 18px;
+    font-size: 14px; line-height: 1.6;
+  }
+  .insight-box strong { color: var(--accent2); }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 20px; margin-top: 48px;
+  }
+  .section-icon {
+    width: 40px; height: 40px;
+    background: rgba(0,229,255,0.1);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 26px; font-weight: 700;
+    color: #fff; letter-spacing: 1px;
+  }
+  .section-desc {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 1px; margin-top: 2px;
+  }
+  .section-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── SENSITIVITY TABLE ── */
+  .sens-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    margin-bottom: 8px;
+  }
+  .sens-table thead tr {
+    background: transparent;
+  }
+  .sens-table thead th {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    color: var(--muted); text-transform: uppercase;
+    padding: 8px 16px; text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .sens-table thead th:not(:first-child) { text-align: center; }
+
+  .sens-table tbody tr {
+    background: var(--bg-card);
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .sens-table tbody tr:hover { background: rgba(0,229,255,0.06); }
+
+  .sens-table tbody td {
+    padding: 12px 16px;
+    font-size: 14px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid rgba(0,229,255,0.05);
+  }
+  .sens-table tbody td:first-child {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px; font-weight: 600;
+    color: var(--text);
+    border-left: 2px solid transparent;
+  }
+  .sens-table tbody tr:hover td:first-child { border-left-color: var(--accent); }
+
+  .old-val {
+    text-align: center; color: var(--muted);
+    font-family: 'Share Tech Mono', monospace; font-size: 13px;
+    text-decoration: line-through; opacity: 0.5;
+  }
+  .new-val {
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace; font-size: 15px; font-weight: 700;
+    color: var(--green);
+    text-shadow: 0 0 8px rgba(57,255,20,0.4);
+  }
+  .why-col {
+    font-size: 12px; color: var(--muted);
+    font-style: italic; line-height: 1.4;
+  }
+  .key-fix { color: var(--accent2); font-weight: 700; font-style: normal; }
+
+  /* ── QUICK COPY PANEL ── */
+  .quickcopy {
+    margin-top: 56px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .quickcopy::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--green), var(--accent));
+    background-size: 300% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+  @keyframes shimmer { 0%{background-position:0% 0%} 100%{background-position:300% 0%} }
+
+  .quickcopy-header {
+    padding: 18px 24px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: #fff; letter-spacing: 1px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .quickcopy-header span { color: var(--accent); }
+  .copy-btn {
+    margin-left: auto;
+    background: rgba(0,229,255,0.1);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 2px;
+    padding: 6px 16px; cursor: pointer;
+    transition: all 0.2s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .copy-btn:hover { background: rgba(0,229,255,0.2); box-shadow: var(--glow); }
+
+  .quickcopy-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+  }
+  .qc-section {
+    padding: 20px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .qc-section:last-child { border-right: none; }
+  .qc-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    color: var(--accent); margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .qc-row {
+    display: flex; justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+  }
+  .qc-label { color: var(--muted); font-family: 'Share Tech Mono', monospace; font-size: 11px; }
+  .qc-num { color: var(--green); font-family: 'Share Tech Mono', monospace; font-weight: 700; }
+
+  /* ── PRO TIPS ── */
+  .tips-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; margin-top: 12px;
+  }
+  .tip-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 18px 20px;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .tip-card:hover { border-color: rgba(0,229,255,0.4); box-shadow: var(--glow); }
+  .tip-num {
+    position: absolute; top: -10px; left: 16px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; color: var(--accent);
+    background: var(--bg-deep); padding: 0 6px;
+    letter-spacing: 2px;
+  }
+  .tip-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px;
+  }
+  .tip-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .tip-body strong { color: var(--accent); }
+
+  .mistakes {
+    margin-top: 24px;
+    background: rgba(255,69,0,0.05);
+    border: 1px solid rgba(255,69,0,0.2);
+    padding: 20px 24px;
+  }
+  .mistakes h3 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--accent2); margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+  .mistake-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid rgba(255,69,0,0.08);
+    font-size: 13px; color: var(--muted); line-height: 1.5;
+  }
+  .mistake-item::before { content: '✕'; color: var(--accent2); flex-shrink: 0; margin-top: 1px; }
+
+  /* ── 7-DAY PLAN ── */
+  .training-plan {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px; margin-top: 12px;
+  }
+  .day-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .day-card:hover { box-shadow: 0 0 20px rgba(0,229,255,0.12); }
+  .day-card::after {
+    content: attr(data-day);
+    position: absolute; bottom: -10px; right: -4px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 72px; font-weight: 900;
+    color: rgba(0,229,255,0.04); line-height: 1;
+    pointer-events: none;
+  }
+  .day-badge {
+    display: inline-block;
+    background: rgba(0,229,255,0.1);
+    border: 1px solid var(--border);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; color: var(--accent);
+    padding: 3px 10px; margin-bottom: 10px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .day-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px; font-weight: 700; color: #fff;
+    margin-bottom: 10px;
+  }
+  .day-tasks { list-style: none; }
+  .day-tasks li {
+    font-size: 12px; color: var(--muted);
+    padding: 4px 0; padding-left: 14px; position: relative;
+    line-height: 1.4;
+  }
+  .day-tasks li::before {
+    content: '›'; color: var(--accent);
+    position: absolute; left: 0;
+  }
+  .day-goal {
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 1px; color: var(--green);
+  }
+
+  /* ── FINAL INSIGHTS ── */
+  .insights {
+    margin-top: 48px; display: flex; flex-direction: column; gap: 14px;
+  }
+  .insight {
+    background: var(--bg-card);
+    border-left: 3px solid var(--accent);
+    padding: 18px 22px;
+    font-size: 14px; line-height: 1.7; color: var(--text);
+  }
+  .insight strong { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 60px;
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; color: var(--muted);
+    letter-spacing: 1px; line-height: 2;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .sens-table .why-col { display: none; }
+    .qc-section { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .container > * { animation: fadeUp 0.5s ease both; }
+  .container > *:nth-child(2) { animation-delay: 0.1s; }
+  .container > *:nth-child(3) { animation-delay: 0.15s; }
+  .container > *:nth-child(4) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-eyebrow">◄ SENSITIVITY PROFILE ►</div>
+  <h1>BGMI <span>PRO</span> SETUP</h1>
+  <p class="header-sub">NOTHING 3a &nbsp;|&nbsp; OPTIMIZED CONFIGURATION</p>
+  <div class="tags">
+    <span class="tag">5-FINGER CLAW</span>
+    <span class="tag">GYRO ALWAYS ON</span>
+    <span class="tag">60 FPS</span>
+    <span class="tag">AIM ASSIST OFF</span>
+    <span class="tag">AGGRESSIVE RUSHER</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- DEVICE PROFILE -->
+  <div class="device-card">
+    <h2>Nothing 3a — Device Profile</h2>
+    <div class="device-specs">
+      <div class="spec-item">
+        <div class="spec-label">Display</div>
+        <div class="spec-value">6.77" AMOLED · 120Hz</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Touch Response</div>
+        <div class="spec-value">Capacitive Multi-touch · 5-Claw Ready</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Gyro Sensor</div>
+        <div class="spec-value">BMI260 · Pro-grade · Low Drift</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Processor</div>
+        <div class="spec-value">Snapdragon 7s Gen 3 · Stable 60FPS</div>
+      </div>
+    </div>
+    <div class="insight-box">
+      ⚡ <strong>Key Insight:</strong> Nothing 3a's BMI260 gyro is pro-grade — same tier as flagships. Your old gyro values (320–390%) were <strong>too aggressive</strong>, causing overcorrection and spray deviation. This is the root cause of your recoil problem.
+    </div>
+  </div>
+
+  <!-- CAMERA SENSITIVITY -->
+  <div class="section-header">
+    <div class="section-icon">📷</div>
+    <div>
+      <div class="section-title">Camera Sensitivity</div>
+      <div class="section-desc">FREE-LOOK VIEW SPEED — HIPFIRE & PANNING</div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <table class="sens-table">
+    <thead><tr>
+      <th>Scope</th><th>Old</th><th>✅ New</th><th>Why</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>TPP No Scope</td><td class="old-val">120%</td><td class="new-val">110%</td><td class="why-col">Slightly tamed for better hipfire tracking</td></tr>
+      <tr><td>FPP No Scope</td><td class="old-val">120%</td><td class="new-val">108%</td><td class="why-col">Reduces over-rotation in close fights</td></tr>
+      <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-val">89%</td><td class="new-val">85%</td><td class="why-col">Tighter control on 1x fights</td></tr>
+      <tr><td>2x Scope</td><td class="old-val">44%</td><td class="new-val">42%</td><td class="why-col">Smoother mid-range panning</td></tr>
+      <tr><td>3x Scope</td><td class="old-val">30%</td><td class="new-val">28%</td><td class="why-col">Better spray stability</td></tr>
+      <tr><td>4x Scope</td><td class="old-val">22%</td><td class="new-val">20%</td><td class="why-col">Precise medium-long range</td></tr>
+      <tr><td>6x Scope</td><td class="old-val">15%</td><td class="new-val">13%</td><td class="why-col">Stable bolt-action tracking</td></tr>
+      <tr><td>8x Scope</td><td class="old-val">11%</td><td class="new-val">10%</td><td class="why-col">Minimal — snapping only</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ADS SENSITIVITY -->
+  <div class="section-header">
+    <div class="section-icon">🎯</div>
+    <div>
+      <div class="section-title">ADS Sensitivity</div>
+      <div class="section-desc">AIM-DOWN-SIGHTS SPEED — FIRST SHOT ACCURACY</div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <table class="sens-table">
+    <thead><tr>
+      <th>Scope</th><th>Old</th><th>✅ New</th><th>Why</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>TPP No Scope</td><td class="old-val">120%</td><td class="new-val">105%</td><td class="why-col">Prevents overshooting targets on rush</td></tr>
+      <tr><td>FPP No Scope</td><td class="old-val">120%</td><td class="new-val">105%</td><td class="why-col">Matches TPP for muscle memory consistency</td></tr>
+      <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-val">88%</td><td class="new-val">82%</td><td class="why-col">Tighter 1x recoil management</td></tr>
+      <tr><td>2x Scope</td><td class="old-val">44%</td><td class="new-val">40%</td><td class="why-col">Clean spray transfers at mid-range</td></tr>
+      <tr><td>3x Scope</td><td class="old-val">29%</td><td class="new-val">26%</td><td class="why-col">Controlled M416/AKM sprays</td></tr>
+      <tr><td>4x Scope</td><td class="old-val">22%</td><td class="new-val">19%</td><td class="why-col">Stable 4x taps and short bursts</td></tr>
+      <tr><td>6x Scope</td><td class="old-val">15%</td><td class="new-val">12%</td><td class="why-col">Precision only — slow and deliberate</td></tr>
+      <tr><td>8x Scope</td><td class="old-val">11%</td><td class="new-val">9%</td><td class="why-col">Lock-in long range shots</td></tr>
+    </tbody>
+  </table>
+
+  <!-- GYROSCOPE -->
+  <div class="section-header">
+    <div class="section-icon">🌀</div>
+    <div>
+      <div class="section-title">Gyroscope Sensitivity</div>
+      <div class="section-desc">GYRO AIM SPEED — MOST CRITICAL SECTION</div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <table class="sens-table">
+    <thead><tr>
+      <th>Scope</th><th>Old</th><th>✅ New</th><th>Why</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>TPP No Scope</td><td class="old-val">320%</td><td class="new-val">280%</td><td class="why-col">Less wrist fatigue, more controlled hipfire</td></tr>
+      <tr><td>FPP No Scope</td><td class="old-val">320%</td><td class="new-val">275%</td><td class="why-col">Prevents snap overcorrection</td></tr>
+      <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-val">390%</td><td class="new-val">320%</td><td class="why-col"><span class="key-fix">⚡ KEY FIX</span> — Was too high, causing recoil bounce</td></tr>
+      <tr><td>2x Scope</td><td class="old-val">195%</td><td class="new-val">165%</td><td class="why-col">Smoother mid-range spray pulls</td></tr>
+      <tr><td>3x Scope</td><td class="old-val">130%</td><td class="new-val">110%</td><td class="why-col">Stable gyro recoil pull at 3x</td></tr>
+      <tr><td>4x Scope</td><td class="old-val">98%</td><td class="new-val">82%</td><td class="why-col">Controlled gyr
