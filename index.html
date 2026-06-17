@@ -667,445 +667,540 @@ footer::before {
     <div class="badge">Aggressive Rusher</div>
     <div class="badge orange">Recoil Focus</div>
     <div class="badge green">Gyro Tuned</div>
-       clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
-  }
-  .device-card::before {
-    content: 'DEVICE PROFILE';
-    position: absolute; top: -10px; left: 24px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 3px;
-    color: var(--accent); background: var(--bg-deep);
-    padding: 0 8px;
-  }
-  .device-card h2 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 22px; font-weight: 700;
-    color: #fff; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .device-card h2::before { content: '◈'; color: var(--accent); }
-  .device-specs {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px;
-  }
-  .spec-item {
-    background: rgba(0,229,255,0.04);
-    border-left: 2px solid var(--accent);
-    padding: 10px 14px;
-  }
-  .spec-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 4px;
-  }
-  .spec-value { font-size: 14px; color: var(--text); font-weight: 600; }
-  .insight-box {
-    margin-top: 20px;
-    background: rgba(255,69,0,0.07);
-    border: 1px solid rgba(255,69,0,0.25);
-    border-left: 3px solid var(--accent2);
-    padding: 14px 18px;
-    font-size: 14px; line-height: 1.6;
-  }
-  .insight-box strong { color: var(--accent2); }
-
-  /* ── SECTION HEADERS ── */
-  .section-header {
-    display: flex; align-items: center; gap: 16px;
-    margin-bottom: 20px; margin-top: 48px;
-  }
-  .section-icon {
-    width: 40px; height: 40px;
-    background: rgba(0,229,255,0.1);
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    flex-shrink: 0;
-  }
-  .section-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 26px; font-weight: 700;
-    color: #fff; letter-spacing: 1px;
-  }
-  .section-desc {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; color: var(--muted);
-    letter-spacing: 1px; margin-top: 2px;
-  }
-  .section-line {
-    flex: 1; height: 1px;
-    background: linear-gradient(90deg, var(--border), transparent);
-  }
-
-  /* ── SENSITIVITY TABLE ── */
-  .sens-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 4px;
-    margin-bottom: 8px;
-  }
-  .sens-table thead tr {
-    background: transparent;
-  }
-  .sens-table thead th {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 3px;
-    color: var(--muted); text-transform: uppercase;
-    padding: 8px 16px; text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .sens-table thead th:not(:first-child) { text-align: center; }
-
-  .sens-table tbody tr {
-    background: var(--bg-card);
-    transition: background 0.2s;
-    cursor: default;
-  }
-  .sens-table tbody tr:hover { background: rgba(0,229,255,0.06); }
-
-  .sens-table tbody td {
-    padding: 12px 16px;
-    font-size: 14px;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid rgba(0,229,255,0.05);
-  }
-  .sens-table tbody td:first-child {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 15px; font-weight: 600;
-    color: var(--text);
-    border-left: 2px solid transparent;
-  }
-  .sens-table tbody tr:hover td:first-child { border-left-color: var(--accent); }
-
-  .old-val {
-    text-align: center; color: var(--muted);
-    font-family: 'Share Tech Mono', monospace; font-size: 13px;
-    text-decoration: line-through; opacity: 0.5;
-  }
-  .new-val {
-    text-align: center;
-    font-family: 'Share Tech Mono', monospace; font-size: 15px; font-weight: 700;
-    color: var(--green);
-    text-shadow: 0 0 8px rgba(57,255,20,0.4);
-  }
-  .why-col {
-    font-size: 12px; color: var(--muted);
-    font-style: italic; line-height: 1.4;
-  }
-  .key-fix { color: var(--accent2); font-weight: 700; font-style: normal; }
-
-  /* ── QUICK COPY PANEL ── */
-  .quickcopy {
-    margin-top: 56px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .quickcopy::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--green), var(--accent));
-    background-size: 300% 100%;
-    animation: shimmer 3s linear infinite;
-  }
-  @keyframes shimmer { 0%{background-position:0% 0%} 100%{background-position:300% 0%} }
-
-  .quickcopy-header {
-    padding: 18px 24px;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 18px; font-weight: 700;
-    color: #fff; letter-spacing: 1px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .quickcopy-header span { color: var(--accent); }
-  .copy-btn {
-    margin-left: auto;
-    background: rgba(0,229,255,0.1);
-    border: 1px solid var(--border);
-    color: var(--accent);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 2px;
-    padding: 6px 16px; cursor: pointer;
-    transition: all 0.2s;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-  }
-  .copy-btn:hover { background: rgba(0,229,255,0.2); box-shadow: var(--glow); }
-
-  .quickcopy-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0;
-  }
-  .qc-section {
-    padding: 20px 24px;
-    border-right: 1px solid var(--border);
-  }
-  .qc-section:last-child { border-right: none; }
-  .qc-title {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 3px;
-    color: var(--accent); margin-bottom: 12px;
-    text-transform: uppercase;
-  }
-  .qc-row {
-    display: flex; justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-size: 13px;
-  }
-  .qc-label { color: var(--muted); font-family: 'Share Tech Mono', monospace; font-size: 11px; }
-  .qc-num { color: var(--green); font-family: 'Share Tech Mono', monospace; font-weight: 700; }
-
-  /* ── PRO TIPS ── */
-  .tips-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px; margin-top: 12px;
-  }
-  .tip-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 18px 20px;
-    position: relative;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .tip-card:hover { border-color: rgba(0,229,255,0.4); box-shadow: var(--glow); }
-  .tip-num {
-    position: absolute; top: -10px; left: 16px;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; color: var(--accent);
-    background: var(--bg-deep); padding: 0 6px;
-    letter-spacing: 2px;
-  }
-  .tip-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 16px; font-weight: 700; color: #fff;
-    margin-bottom: 8px;
-  }
-  .tip-body { font-size: 13px; color: var(--muted); line-height: 1.6; }
-  .tip-body strong { color: var(--accent); }
-
-  .mistakes {
-    margin-top: 24px;
-    background: rgba(255,69,0,0.05);
-    border: 1px solid rgba(255,69,0,0.2);
-    padding: 20px 24px;
-  }
-  .mistakes h3 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 18px; font-weight: 700;
-    color: var(--accent2); margin-bottom: 14px;
-    letter-spacing: 1px;
-  }
-  .mistake-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 8px 0; border-bottom: 1px solid rgba(255,69,0,0.08);
-    font-size: 13px; color: var(--muted); line-height: 1.5;
-  }
-  .mistake-item::before { content: '✕'; color: var(--accent2); flex-shrink: 0; margin-top: 1px; }
-
-  /* ── 7-DAY PLAN ── */
-  .training-plan {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px; margin-top: 12px;
-  }
-  .day-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    padding: 18px;
-    position: relative;
-    overflow: hidden;
-    transition: box-shadow 0.2s;
-  }
-  .day-card:hover { box-shadow: 0 0 20px rgba(0,229,255,0.12); }
-  .day-card::after {
-    content: attr(data-day);
-    position: absolute; bottom: -10px; right: -4px;
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 72px; font-weight: 900;
-    color: rgba(0,229,255,0.04); line-height: 1;
-    pointer-events: none;
-  }
-  .day-badge {
-    display: inline-block;
-    background: rgba(0,229,255,0.1);
-    border: 1px solid var(--border);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; color: var(--accent);
-    padding: 3px 10px; margin-bottom: 10px;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-  }
-  .day-title {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 17px; font-weight: 700; color: #fff;
-    margin-bottom: 10px;
-  }
-  .day-tasks { list-style: none; }
-  .day-tasks li {
-    font-size: 12px; color: var(--muted);
-    padding: 4px 0; padding-left: 14px; position: relative;
-    line-height: 1.4;
-  }
-  .day-tasks li::before {
-    content: '›'; color: var(--accent);
-    position: absolute; left: 0;
-  }
-  .day-goal {
-    margin-top: 10px; padding-top: 10px;
-    border-top: 1px solid var(--border);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 1px; color: var(--green);
-  }
-
-  /* ── FINAL INSIGHTS ── */
-  .insights {
-    margin-top: 48px; display: flex; flex-direction: column; gap: 14px;
-  }
-  .insight {
-    background: var(--bg-card);
-    border-left: 3px solid var(--accent);
-    padding: 18px 22px;
-    font-size: 14px; line-height: 1.7; color: var(--text);
-  }
-  .insight strong { color: var(--gold); }
-
-  /* ── FOOTER ── */
-  footer {
-    margin-top: 60px;
-    border-top: 1px solid var(--border);
-    padding: 24px;
-    text-align: center;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; color: var(--muted);
-    letter-spacing: 1px; line-height: 2;
-  }
-
-  /* ── MOBILE ── */
-  @media (max-width: 600px) {
-    .sens-table .why-col { display: none; }
-    .qc-section { border-right: none; border-bottom: 1px solid var(--border); }
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .container > * { animation: fadeUp 0.5s ease both; }
-  .container > *:nth-child(2) { animation-delay: 0.1s; }
-  .container > *:nth-child(3) { animation-delay: 0.15s; }
-  .container > *:nth-child(4) { animation-delay: 0.2s; }
-</style>
-</head>
-<body>
-
-<header>
-  <div class="header-eyebrow">◄ SENSITIVITY PROFILE ►</div>
-  <h1>BGMI <span>PRO</span> SETUP</h1>
-  <p class="header-sub">NOTHING 3a &nbsp;|&nbsp; OPTIMIZED CONFIGURATION</p>
-  <div class="tags">
-    <span class="tag">5-FINGER CLAW</span>
-    <span class="tag">GYRO ALWAYS ON</span>
-    <span class="tag">60 FPS</span>
-    <span class="tag">AIM ASSIST OFF</span>
-    <span class="tag">AGGRESSIVE RUSHER</span>
+    <div class="badge">Aim Assist OFF</div>
+    <div class="badge orange">ADS Optimised</div>
   </div>
+
+  <div class="header-divider"></div>
 </header>
 
+<!-- ════════════════════════════════════════
+     CONTAINER
+════════════════════════════════════════ -->
 <div class="container">
 
-  <!-- DEVICE PROFILE -->
-  <div class="device-card">
-    <h2>Nothing 3a — Device Profile</h2>
-    <div class="device-specs">
-      <div class="spec-item">
-        <div class="spec-label">Display</div>
-        <div class="spec-value">6.77" AMOLED · 120Hz</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Touch Response</div>
-        <div class="spec-value">Capacitive Multi-touch · 5-Claw Ready</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Gyro Sensor</div>
-        <div class="spec-value">BMI260 · Pro-grade · Low Drift</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Processor</div>
-        <div class="spec-value">Snapdragon 7s Gen 3 · Stable 60FPS</div>
-      </div>
+  <!-- ─── DEVICE CARD ─── -->
+  <div class="device-card reveal">
+    <div class="device-card-top-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="device-card-label">DEVICE_PROFILE.SYS</div>
     </div>
-    <div class="insight-box">
-      ⚡ <strong>Key Insight:</strong> Nothing 3a's BMI260 gyro is pro-grade — same tier as flagships. Your old gyro values (320–390%) were <strong>too aggressive</strong>, causing overcorrection and spray deviation. This is the root cause of your recoil problem.
+    <div class="device-card-body">
+      <div class="device-name">Nothing Phone 3a</div>
+      <div class="specs-grid">
+        <div class="spec-block">
+          <div class="spec-key">Display</div>
+          <div class="spec-val">6.77&quot; AMOLED · 120Hz</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Touch Response</div>
+          <div class="spec-val">Capacitive Multi-Touch · 5-Claw Ready</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Gyro Sensor</div>
+          <div class="spec-val">BMI260 · Pro-Grade · Low Drift</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Processor</div>
+          <div class="spec-val">Snapdragon 7s Gen 3 · Stable 60FPS</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Target FPS</div>
+          <div class="spec-val">60 FPS Locked</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Play Style</div>
+          <div class="spec-val">Aggressive Rusher · Close-Mid Range</div>
+        </div>
+      </div>
+      <div class="insight">
+        ⚡ <strong>Key Insight:</strong> Nothing 3a's BMI260 gyro is pro-grade — same tier as flagship devices. Your old gyro values (320–390%) were <strong>too aggressive</strong>, causing overcorrection and spray deviation. This profile surgically corrects the root cause.
+      </div>
     </div>
   </div>
 
-  <!-- CAMERA SENSITIVITY -->
-  <div class="section-header">
-    <div class="section-icon">📷</div>
-    <div>
-      <div class="section-title">Camera Sensitivity</div>
-      <div class="section-desc">FREE-LOOK VIEW SPEED — HIPFIRE & PANNING</div>
+  <!-- ─── CAMERA SENSITIVITY ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">📷</div>
+    <div class="sec-text">
+      <div class="sec-title">Camera Sensitivity</div>
+      <div class="sec-sub">FREE-LOOK VIEW SPEED — HIPFIRE &amp; PANNING</div>
     </div>
-    <div class="section-line"></div>
+    <div class="sec-line"></div>
   </div>
-  <table class="sens-table">
-    <thead><tr>
-      <th>Scope</th><th>Old</th><th>✅ New</th><th>Why</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>TPP No Scope</td><td class="old-val">120%</td><td class="new-val">110%</td><td class="why-col">Slightly tamed for better hipfire tracking</td></tr>
-      <tr><td>FPP No Scope</td><td class="old-val">120%</td><td class="new-val">108%</td><td class="why-col">Reduces over-rotation in close fights</td></tr>
-      <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-val">89%</td><td class="new-val">85%</td><td class="why-col">Tighter control on 1x fights</td></tr>
-      <tr><td>2x Scope</td><td class="old-val">44%</td><td class="new-val">42%</td><td class="why-col">Smoother mid-range panning</td></tr>
-      <tr><td>3x Scope</td><td class="old-val">30%</td><td class="new-val">28%</td><td class="why-col">Better spray stability</td></tr>
-      <tr><td>4x Scope</td><td class="old-val">22%</td><td class="new-val">20%</td><td class="why-col">Precise medium-long range</td></tr>
-      <tr><td>6x Scope</td><td class="old-val">15%</td><td class="new-val">13%</td><td class="why-col">Stable bolt-action tracking</td></tr>
-      <tr><td>8x Scope</td><td class="old-val">11%</td><td class="new-val">10%</td><td class="why-col">Minimal — snapping only</td></tr>
-    </tbody>
-  </table>
 
-  <!-- ADS SENSITIVITY -->
-  <div class="section-header">
-    <div class="section-icon">🎯</div>
-    <div>
-      <div class="section-title">ADS Sensitivity</div>
-      <div class="section-desc">AIM-DOWN-SIGHTS SPEED — FIRST SHOT ACCURACY</div>
-    </div>
-    <div class="section-line"></div>
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">120%</td><td class="new-v">110%</td><td class="why">Slightly tamed for better hipfire tracking</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">120%</td><td class="new-v">108%</td><td class="why">Reduces over-rotation in close fights</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">89%</td><td class="new-v">85%</td><td class="why">Tighter control on 1x fights</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">44%</td><td class="new-v">42%</td><td class="why">Smoother mid-range panning</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">30%</td><td class="new-v">28%</td><td class="why">Better spray stability</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">22%</td><td class="new-v">20%</td><td class="why">Precise medium-long range</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">15%</td><td class="new-v">13%</td><td class="why">Stable bolt-action tracking</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">11%</td><td class="new-v">10%</td><td class="why">Minimal — snapping only</td></tr>
+      </tbody>
+    </table>
   </div>
-  <table class="sens-table">
-    <thead><tr>
-      <th>Scope</th><th>Old</th><th>✅ New</th><th>Why</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>TPP No Scope</td><td class="old-val">120%</td><td class="new-val">105%</td><td class="why-col">Prevents overshooting targets on rush</td></tr>
-      <tr><td>FPP No Scope</td><td class="old-val">120%</td><td class="new-val">105%</td><td class="why-col">Matches TPP for muscle memory consistency</td></tr>
-      <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-val">88%</td><td class="new-val">82%</td><td class="why-col">Tighter 1x recoil management</td></tr>
-      <tr><td>2x Scope</td><td class="old-val">44%</td><td class="new-val">40%</td><td class="why-col">Clean spray transfers at mid-range</td></tr>
-      <tr><td>3x Scope</td><td class="old-val">29%</td><td class="new-val">26%</td><td class="why-col">Controlled M416/AKM sprays</td></tr>
-      <tr><td>4x Scope</td><td class="old-val">22%</td><td class="new-val">19%</td><td class="why-col">Stable 4x taps and short bursts</td></tr>
-      <tr><td>6x Scope</td><td class="old-val">15%</td><td class="new-val">12%</td><td class="why-col">Precision only — slow and deliberate</td></tr>
-      <tr><td>8x Scope</td><td class="old-val">11%</td><td class="new-val">9%</td><td class="why-col">Lock-in long range shots</td></tr>
-    </tbody>
-  </table>
 
-  <!-- GYROSCOPE -->
-  <div class="section-header">
-    <div class="section-icon">🌀</div>
-    <div>
-      <div class="section-title">Gyroscope Sensitivity</div>
-      <div class="section-desc">GYRO AIM SPEED — MOST CRITICAL SECTION</div>
+  <!-- Camera vis bars -->
+  <div class="vis-wrap reveal">
+    <div class="vis-header">📊 CAMERA SENSITIVITY VISUAL MAP</div>
+    <div class="vis-rows" id="cam-bars">
+      <div class="vis-row"><div class="vis-label">TPP No Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#00ff88)" data-val="55"></div></div><div class="vis-num" style="color:var(--green)">110%</div></div>
+      <div class="vis-row"><div class="vis-label">FPP No Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#00ff88)" data-val="54"></div></div><div class="vis-num" style="color:var(--green)">108%</div></div>
+      <div class="vis-row"><div class="vis-label">Red Dot / Holo</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#00ff88)" data-val="42.5"></div></div><div class="vis-num" style="color:var(--green)">85%</div></div>
+      <div class="vis-row"><div class="vis-label">2x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="21"></div></div><div class="vis-num" style="color:var(--green)">42%</div></div>
+      <div class="vis-row"><div class="vis-label">3x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#b347ff,#ff4500)" data-val="14"></div></div><div class="vis-num" style="color:var(--green)">28%</div></div>
+      <div class="vis-row"><div class="vis-label">4x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="10"></div></div><div class="vis-num" style="color:var(--green)">20%</div></div>
+      <div class="vis-row"><div class="vis-label">6x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="6.5"></div></div><div class="vis-num" style="color:var(--green)">13%</div></div>
+      <div class="vis-row"><div class="vis-label">8x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff1744,#ff1744)" data-val="5"></div></div><div class="vis-num" style="color:var(--green)">10%</div></div>
     </div>
-    <div class="section-line"></div>
   </div>
-  <table class="sens-table">
-    <thead><tr>
-      <th>Scope</th><th>Old</th><th>✅ New</th><th>Why</th>
-    </tr></thead>
-    <tbody>
-      <tr><td>TPP No Scope</td><td class="old-val">320%</td><td class="new-val">280%</td><td class="why-col">Less wrist fatigue, more controlled hipfire</td></tr>
-      <tr><td>FPP No Scope</td><td class="old-val">320%</td><td class="new-val">275%</td><td class="why-col">Prevents snap overcorrection</td></tr>
-      <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-val">390%</td><td class="new-val">320%</td><td class="why-col"><span class="key-fix">⚡ KEY FIX</span> — Was too high, causing recoil bounce</td></tr>
-      <tr><td>2x Scope</td><td class="old-val">195%</td><td class="new-val">165%</td><td class="why-col">Smoother mid-range spray pulls</td></tr>
-      <tr><td>3x Scope</td><td class="old-val">130%</td><td class="new-val">110%</td><td class="why-col">Stable gyro recoil pull at 3x</td></tr>
-      <tr><td>4x Scope</td><td class="old-val">98%</td><td class="new-val">82%</td><td class="why-col">Controlled gyr
+
+  <!-- ─── ADS SENSITIVITY ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">🎯</div>
+    <div class="sec-text">
+      <div class="sec-title">ADS Sensitivity</div>
+      <div class="sec-sub">AIM-DOWN-SIGHTS SPEED — FIRST SHOT ACCURACY</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">120%</td><td class="new-v">105%</td><td class="why">Prevents overshooting targets on rush</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">120%</td><td class="new-v">105%</td><td class="why">Matches TPP for muscle memory consistency</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">88%</td><td class="new-v">82%</td><td class="why">Tighter 1x recoil management</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">44%</td><td class="new-v">40%</td><td class="why">Clean spray transfers at mid-range</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">29%</td><td class="new-v">26%</td><td class="why">Controlled M416/AKM sprays</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">22%</td><td class="new-v">19%</td><td class="why">Stable 4x taps and short bursts</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">15%</td><td class="new-v">12%</td><td class="why">Precision only — slow and deliberate</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">11%</td><td class="new-v">9%</td><td class="why">Lock-in long range shots</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── GYROSCOPE ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">🌀</div>
+    <div class="sec-text">
+      <div class="sec-title">Gyroscope Sensitivity</div>
+      <div class="sec-sub">GYRO AIM SPEED — MOST CRITICAL SECTION</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">320%</td><td class="new-v">280%</td><td class="why">Less wrist fatigue, more controlled hipfire</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">320%</td><td class="new-v">275%</td><td class="why">Prevents snap overcorrection</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">390%</td><td class="new-v">320%</td><td class="why"><span class="key-fix">⚡ KEY FIX</span> — Was too high, causing recoil bounce</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">195%</td><td class="new-v">165%</td><td class="why">Smoother mid-range spray pulls</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">130%</td><td class="new-v">110%</td><td class="why">Stable gyro recoil pull at 3x</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">98%</td><td class="new-v">82%</td><td class="why">Controlled gyro at 4x, no jitter</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">65%</td><td class="new-v">52%</td><td class="why">Precise micro-adjustments</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">49%</td><td class="new-v">38%</td><td class="why">Near-zero gyro — rely on thumb</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Gyro vis bars -->
+  <div class="vis-wrap reveal">
+    <div class="vis-header">📊 GYRO SENSITIVITY VISUAL MAP — OLD vs NEW</div>
+    <div class="vis-rows" id="gyro-bars">
+      <div class="vis-row"><div class="vis-label">TPP: 320% → 280%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="70"></div></div><div class="vis-num" style="color:var(--green)">280%</div></div>
+      <div class="vis-row"><div class="vis-label">FPP: 320% → 275%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="68.75"></div></div><div class="vis-num" style="color:var(--green)">275%</div></div>
+      <div class="vis-row"><div class="vis-label">Red Dot: 390% → 320%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ffd700)" data-val="80"></div></div><div class="vis-num" style="color:var(--orange)">320%</div></div>
+      <div class="vis-row"><div class="vis-label">2x: 195% → 165%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="41.25"></div></div><div class="vis-num" style="color:var(--green)">165%</div></div>
+      <div class="vis-row"><div class="vis-label">3x: 130% → 110%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#b347ff,#ff4500)" data-val="27.5"></div></div><div class="vis-num" style="color:var(--green)">110%</div></div>
+      <div class="vis-row"><div class="vis-label">4x: 98% → 82%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="20.5"></div></div><div class="vis-num" style="color:var(--green)">82%</div></div>
+      <div class="vis-row"><div class="vis-label">6x: 65% → 52%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="13"></div></div><div class="vis-num" style="color:var(--green)">52%</div></div>
+      <div class="vis-row"><div class="vis-label">8x: 49% → 38%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff1744,#ff1744)" data-val="9.5"></div></div><div class="vis-num" style="color:var(--green)">38%</div></div>
+    </div>
+  </div>
+
+  <!-- ─── ADS GYROSCOPE ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">🔫</div>
+    <div class="sec-text">
+      <div class="sec-title">ADS Gyroscope Sensitivity</div>
+      <div class="sec-sub">GYRO WHEN ADS ACTIVE — WHERE YOUR RECOIL FIX LIVES</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">320%</td><td class="new-v">272%</td><td class="why">Cleaner hipfire ADS transition</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">320%</td><td class="new-v">268%</td><td class="why">Consistent feel across perspectives</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">380%</td><td class="new-v">310%</td><td class="why"><span class="key-fix">⚡ KEY FIX</span> — Old value caused vertical recoil spike</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">190%</td><td class="new-v">158%</td><td class="why">Laser spray at 2x now possible</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">127%</td><td class="new-v">106%</td><td class="why">Pull-down gyro works smoothly</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">95%</td><td class="new-v">78%</td><td class="why">Tap-fire accuracy improved</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">63%</td><td class="new-v">50%</td><td class="why">Micro-correction without drift</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">48%</td><td class="new-v">36%</td><td class="why">Stable scope, thumb does the work</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── QUICK REF PANEL ─── -->
+  <div class="quick-ref reveal">
+    <div class="qr-header">
+      <div class="qr-title">◈ <span>Quick Reference</span> — All Values</div>
+      <button class="copy-btn" onclick="copyAll()">📋 COPY ALL</button>
+    </div>
+    <div class="qr-grid">
+      <div class="qr-col">
+        <div class="qr-col-title">📷 Camera</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">110%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">108%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">85%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">42%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">28%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">20%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">13%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">10%</div></div>
+      </div>
+      <div class="qr-col">
+        <div class="qr-col-title">🎯 ADS</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">105%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">105%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">82%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">40%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">26%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">19%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">12%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">9%</div></div>
+      </div>
+      <div class="qr-col">
+        <div class="qr-col-title">🌀 Gyroscope</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">280%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">275%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">320%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">165%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">110%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">82%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">52%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">38%</div></div>
+      </div>
+      <div class="qr-col">
+        <div class="qr-col-title">🔫 ADS Gyro</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">272%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">268%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">310%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">158%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">106%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">78%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">50%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">36%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PRO TIPS ─── -->
+  <div class="sec-head reveal" style="margin-top:56px">
+    <div class="sec-icon">🏆</div>
+    <div class="sec-text">
+      <div class="sec-title">Pro Player Secrets</div>
+      <div class="sec-sub">HIDDEN TECHNIQUES TOP PLAYERS USE</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="tips-grid reveal">
+    <div class="tip-card">
+      <span class="tip-num">TIP 01</span>
+      <div class="tip-title">The 70% Gyro Rule</div>
+      <div class="tip-body">Pro players never max out gyro. They keep it at <strong>70–80% of what feels "fast enough"</strong> — this is exactly what we've done here.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 02</span>
+      <div class="tip-title">Gyro Wrist vs Elbow</div>
+      <div class="tip-body">For Always-On gyro at 5-finger claw, use <strong>wrist micro-tilts</strong> not full arm movement — less fatigue, more precision.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 03</span>
+      <div class="tip-title">Red Dot Superiority</div>
+      <div class="tip-body">Always prefer <strong>Red Dot over Holo</strong> in close fights — less visual clutter means better reaction time.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 04</span>
+      <div class="tip-title">Spray Transfer Secret</div>
+      <div class="tip-body">When transferring spray to a new target, <strong>lift gyro tilt to neutral first</strong> then re-engage — prevents wild spray deviation.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 05</span>
+      <div class="tip-title">The Recoil Pull Technique</div>
+      <div class="tip-body">Pull your phone <strong>slightly downward physically</strong> while spraying — combines thumb pull-down + gyro pull for near-zero recoil.</div>
+    </div>
+  </div>
+
+  <!-- ─── MISTAKES ─── -->
+  <div class="mistakes reveal">
+    <div class="mistakes-title">⚠ Common Mistakes to Avoid</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Don't change sensitivity mid-match — always test in Training Grounds first</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Never copy pro sensitivity directly — device differences make it useless</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Don't increase gyro when missing — the problem is usually camera, not gyro</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Avoid changing more than 2 values at a time when adjusting</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Don't judge the sensitivity in the first 2 days — your brain hasn't adapted yet</div>
+  </div>
+
+  <!-- ─── 7-DAY PLAN ─── -->
+  <div class="sec-head reveal" style="margin-top:56px">
+    <div class="sec-icon">📅</div>
+    <div class="sec-text">
+      <div class="sec-title">7-Day Training Plan</div>
+      <div class="sec-sub">FROM ZERO TO LOCKED-IN MUSCLE MEMORY</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="plan-grid reveal">
+    <div class="day-card">
+      <div class="day-ghost">01</div>
+      <div class="day-tag">DAY 01</div>
+      <div class="day-title">Sensitivity Familiarization</div>
+      <ul class="day-tasks">
+        <li>30 min in Training Grounds only</li>
+        <li>Walk around, practice camera movement</li>
+        <li>Get used to new gyro feel — no shooting yet</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Brain adapts to new speed</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">02</div>
+      <div class="day-tag">DAY 02</div>
+      <div class="day-title">Recoil Control Drills</div>
+      <ul class="day-tasks">
+        <li>Fire M416 + AKM at a wall in training</li>
+        <li>Full spray with gyro pull-down technique</li>
+        <li>Repeat 50 sprays per gun</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Consistent vertical spray pattern</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">03</div>
+      <div class="day-tag">DAY 03</div>
+      <div class="day-title">Flick Aim Practice</div>
+      <ul class="day-tasks">
+        <li>Use moving target dummy in training</li>
+        <li>Practice snapping to target with Red Dot</li>
+        <li>20 min flick → 10 min rest → repeat</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Fast first-bullet accuracy</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">04</div>
+      <div class="day-tag">DAY 04</div>
+      <div class="day-title">Close Range Tracking</div>
+      <ul class="day-tasks">
+        <li>Enter TDM (Team Deathmatch)</li>
+        <li>Focus ONLY on tracking moving enemies</li>
+        <li>Don't worry about winning — only smooth aim</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Gyro tracking in real combat</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">05</div>
+      <div class="day-tag">DAY 05</div>
+      <div class="day-title">Spray Transfer Drill</div>
+      <ul class="day-tasks">
+        <li>Line up 3 dummies in training</li>
+        <li>Spray 5 bullets → transfer → repeat</li>
+        <li>Practice the "gyro neutral reset" between targets</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Clean multi-target sprays</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">06</div>
+      <div class="day-tag">DAY 06</div>
+      <div class="day-title">Full Match Application</div>
+      <ul class="day-tasks">
+        <li>Play 3 full matches, aggressive style</li>
+        <li>Note where aim fails — recoil? Flick? Tracking?</li>
+        <li>Make ONE small adjustment if needed (±5% only)</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Real game feel assessment</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">07</div>
+      <div class="day-tag">DAY 07</div>
+      <div class="day-title">Fine Tune &amp; Lock In</div>
+      <ul class="day-tasks">
+        <li>Review performance from Day 6</li>
+        <li>Make final micro-adjustments if needed</li>
+        <li>Play 2 matches to confirm — then LOCK IT</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Muscle memory formation begins</div>
+    </div>
+  </div>
+
+  <!-- ─── FINAL INSIGHTS ─── -->
+  <div class="insights-final reveal">
+    <div class="insight-final orange-border">
+      🔑 <strong>Your Biggest Fix:</strong> Reducing gyro from <strong>390% → 320%</strong> on Red Dot/Holo is the single change that will most dramatically improve your recoil control. That one value was the root cause of your spray going wild.
+    </div>
+    <div class="insight-final">
+      ⏱ <strong>Muscle memory takes 21 days minimum</strong> to fully form. The biggest mistake players make is changing sensitivity after just 2–3 days. Trust the process — the results will come.
+    </div>
+    <div class="insight-final green-border">
+      📱 <strong>Nothing 3a Advantage:</strong> Your BMI260 gyro sensor is the same grade used in flagship devices. Combined with this tuned sensitivity, you have a hardware + software edge over most players.
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-dots">
+    <div class="footer-dot"></div>
+    <div class="footer-dot"></div>
+    <div class="footer-dot"></div>
+  </div>
+  SENSITIVITY PROFILE BUILT FOR: Nothing 3a &nbsp;·&nbsp; 60 FPS &nbsp;·&nbsp; Always-On Gyro &nbsp;·&nbsp; 5-Finger Claw &nbsp;·&nbsp; Aggressive Rusher &nbsp;·&nbsp; Recoil Control Focus &nbsp;·&nbsp; Aim Assist OFF
+</footer>
+
+</div><!-- /wrapper -->
+
+<script>
+/* ──────────────────────────────────────
+   PARTICLES
+────────────────────────────────────── */
+(function() {
+  const container = document.getElementById('particles');
+  const colors = ['#00f5ff','#ff4500','#00ff88','#b347ff','#ffd700'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      background:${color};
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*12+8}s;
+      animation-delay:${Math.random()*10}s;
+      box-shadow: 0 0 ${size*3}px ${color};
+    `;
+    container.appendChild(p);
+  }
+})();
+
+/* ──────────────────────────────────────
+   SCROLL REVEAL
+────────────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+/* ──────────────────────────────────────
+   ANIMATED BARS (trigger on scroll)
+────────────────────────────────────── */
+function animateBars(container) {
+  const fills = container.querySelectorAll('.vis-bar-fill');
+  fills.forEach(fill => {
+    const target = parseFloat(fill.dataset.val);
+    fill.style.width = target + '%';
+  });
+}
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      setTimeout(() => animateBars(e.target), 300);
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.vis-wrap').forEach(el => barObserver.observe(el));
+
+/* ──────────────────────────────────────
+   COPY ALL
+────────────────────────────────────── */
+function copyAll() {
+  const text = `BGMI PRO SENSITIVITY — Nothing 3a
+Aggressive Rusher | 5-Finger | Gyro ON | Aim Assist OFF
+
+━━━ CAMERA ━━━
+TPP No Scope:              110%
+FPP No Scope:              108%
+Red Dot / Holo / Canted:    85%
+2x:                         42%
+3x:                         28%
+4x:                         20%
+6x:                         13%
+8x:                         10%
+
+━━━ ADS ━━━
+TPP No Scope:              105%
+FPP No Scope:              105%
+Red Dot / Holo / Canted:    82%
+2x:                         40%
+3x:                         26%
+4x:                         19%
+6x:                         12%
+8x:                          9%
+
+━━━ GYROSCOPE ━━━
+TPP No Scope:              280%
+FPP No Scope:              275%
+Red Dot / Holo / Canted:   320%
+2x:                        165%
+3x:                        110%
+4x:                         82%
+6x:                         52%
+8x:                         38%
+
+━━━ ADS GYROSCOPE ━━━
+TPP No Scope:              272%
+FPP No Scope:              268%
+Red Dot / Holo / Canted:   310%
+2x:                        158%
+3x:                        106%
+4x:                         78%
+6x:                         50%
+8x:                         36%`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const orig = btn.textContent;
+    btn.textContent = '✓ COPIED!';
+    btn.style.color = 'var(--green)';
+    btn.style.borderColor = 'var(--green)';
+    btn.style.boxShadow = '0 0 16px rgba(0,255,136,0.4)';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.color = '';
+      btn.style.borderColor = '';
+      btn.style.boxShadow = '';
+    }, 2500);
+  });
+}
+</script>
+</body>
+</html>
