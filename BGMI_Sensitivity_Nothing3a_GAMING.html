@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BGMI PRO SENSITIVITY — Nothing 3a</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #020509;
+  --panel:     #050d18;
+  --card:      #070f1e;
+  --cyan:      #00f5ff;
+  --orange:    #ff4500;
+  --green:     #00ff88;
+  --gold:      #ffd700;
+  --purple:    #b347ff;
+  --red:       #ff1744;
+  --text:      #b8d4eb;
+  --muted:     #3d6080;
+  --border:    rgba(0,245,255,0.15);
+  --glow-c:    0 0 20px rgba(0,245,255,0.4);
+  --glow-o:    0 0 20px rgba(255,69,0,0.4);
+  --glow-g:    0 0 20px rgba(0,255,136,0.4);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ══════════════ PARTICLE BG ══════════════ */
+#particles {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+  opacity: 0;
+}
+@keyframes floatUp {
+  0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
+
+/* ══════════════ GRID OVERLAY ══════════════ */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background:
+    repeating-linear-gradient(0deg, transparent 0px, transparent 59px, rgba(0,245,255,0.025) 60px),
+    repeating-linear-gradient(90deg, transparent 0px, transparent 59px, rgba(0,245,255,0.025) 60px);
+}
+/* scanlines */
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 2;
+  background: repeating-linear-gradient(to bottom, transparent 0px, transparent 2px, rgba(0,0,0,0.1) 3px);
+}
+
+/* ══════════════ MAIN WRAPPER ══════════════ */
+.wrapper { position: relative; z-index: 3; }
+
+/* ══════════════ HERO HEADER ══════════════ */
+header {
+  position: relative;
+  text-align: center;
+  padding: 70px 24px 60px;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,245,255,0.08) 0%, transparent 65%),
+              radial-gradient(ellipse 40% 30% at 80% 100%, rgba(255,69,0,0.05) 0%, transparent 60%);
+}
+
+.corner-deco {
+  position: absolute;
+  width: 60px; height: 60px;
+  border-color: var(--cyan);
+  border-style: solid;
+  opacity: 0.4;
+}
+.corner-deco.tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+.corner-deco.tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+.corner-deco.bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+.corner-deco.br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
+
+.eyebrow {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: 6px;
+  color: var(--cyan); opacity: 0.7;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  animation: blink-in 1s ease both;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(32px, 7vw, 76px);
+  font-weight: 900;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 0 0 40px rgba(0,245,255,0.6), 0 0 80px rgba(0,245,255,0.2);
+  animation: slide-down 0.8s cubic-bezier(.22,1,.36,1) both;
+}
+h1 .hl { color: var(--cyan); }
+h1 .hl2 { color: var(--orange); }
+
+.h1-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px; letter-spacing: 2px;
+  color: var(--muted); margin-top: 14px;
+  animation: fade-in 1.2s ease both;
+}
+
+.badge-row {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-top: 24px;
+  animation: fade-in 1.5s ease both;
+}
+.badge {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  padding: 5px 14px;
+  border: 1px solid var(--border);
+  color: var(--cyan);
+  background: rgba(0,245,255,0.05);
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  text-transform: uppercase;
+}
+.badge.orange { color: var(--orange); border-color: rgba(255,69,0,0.3); background: rgba(255,69,0,0.05); }
+.badge.green  { color: var(--green);  border-color: rgba(0,255,136,0.3); background: rgba(0,255,136,0.05); }
+
+.header-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  box-shadow: 0 0 12px rgba(0,245,255,0.4);
+  margin-top: 40px;
+}
+
+/* ══════════════ CONTAINER ══════════════ */
+.container { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* ══════════════ DEVICE CARD ══════════════ */
+.device-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 0;
+  margin-bottom: 56px;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+.device-card-top-bar {
+  background: linear-gradient(90deg, rgba(0,245,255,0.12), rgba(0,245,255,0.04));
+  border-bottom: 1px solid var(--border);
+  padding: 12px 24px;
+  display: flex; align-items: center; gap: 10px;
+}
+.device-card-top-bar .dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot-r { background: var(--red); box-shadow: 0 0 6px var(--red); }
+.dot-y { background: var(--gold); box-shadow: 0 0 6px var(--gold); }
+.dot-g { background: var(--green); box-shadow: 0 0 6px var(--green); }
+.device-card-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 4px;
+  color: var(--cyan); margin-left: auto;
+  text-transform: uppercase;
+}
+.device-card-body { padding: 28px 32px; }
+.device-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px; font-weight: 700;
+  color: #fff; margin-bottom: 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.device-name::before { content: '◈'; color: var(--cyan); font-size: 16px; }
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px; margin-bottom: 20px;
+}
+.spec-block {
+  background: rgba(0,245,255,0.03);
+  border-left: 2px solid var(--cyan);
+  padding: 10px 14px;
+  transition: background 0.2s;
+}
+.spec-block:hover { background: rgba(0,245,255,0.07); }
+.spec-key {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.spec-val { font-size: 13px; color: var(--text); font-weight: 600; }
+
+.insight {
+  background: rgba(255,69,0,0.06);
+  border: 1px solid rgba(255,69,0,0.2);
+  border-left: 3px solid var(--orange);
+  padding: 14px 18px;
+  font-size: 13px; line-height: 1.7; color: var(--text);
+}
+.insight strong { color: var(--orange); }
+
+/* ══════════════ SECTION HEADER ══════════════ */
+.sec-head {
+  display: flex; align-items: center; gap: 16px;
+  margin: 56px 0 20px;
+}
+.sec-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: rgba(0,245,255,0.08);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  position: relative;
+}
+.sec-icon::after {
+  content: '';
+  position: absolute; inset: 3px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border: 1px solid rgba(0,245,255,0.2);
+}
+.sec-text { flex: 1; min-width: 0; }
+.sec-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px; font-weight: 700;
+  color: #fff; letter-spacing: 1px;
+}
+.sec-sub {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--muted); margin-top: 3px;
+}
+.sec-line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ══════════════ SENSITIVITY TABLE ══════════════ */
+.table-wrap {
+  width: 100%; overflow-x: auto;
+  margin-bottom: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 3px;
+  min-width: 500px;
+}
+thead th {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--muted); text-transform: uppercase;
+  padding: 10px 16px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+thead th:not(:first-child) { text-align: center; }
+
+tbody tr {
+  background: var(--card);
+  transition: background 0.15s, transform 0.15s;
+  cursor: default;
+}
+tbody tr:hover {
+  background: rgba(0,245,255,0.06);
+  transform: translateX(3px);
+}
+tbody td {
+  padding: 13px 16px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid rgba(0,245,255,0.04);
+  font-size: 14px;
+}
+tbody td:first-child {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--text);
+  border-left: 2px solid transparent;
+  transition: border-color 0.15s;
+}
+tbody tr:hover td:first-child { border-left-color: var(--cyan); }
+
+.old-v {
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px; color: var(--muted);
+  text-decoration: line-through; opacity: 0.5;
+}
+.new-v {
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 15px; font-weight: 700;
+  color: var(--green);
+  text-shadow: 0 0 10px rgba(0,255,136,0.5);
+}
+.why {
+  font-size: 12px; color: var(--muted);
+  font-style: italic; line-height: 1.4;
+}
+.key-fix {
+  color: var(--orange); font-weight: 700;
+  font-style: normal;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+}
+
+/* ══════════════ PROGRESS BAR VISUAL ══════════════ */
+.vis-wrap {
+  margin: 8px 0 40px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.vis-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 3px;
+  color: var(--cyan);
+}
+.vis-rows { padding: 14px 20px; display: flex; flex-direction: column; gap: 10px; }
+.vis-row { display: flex; align-items: center; gap: 12px; }
+.vis-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; color: var(--muted);
+  width: 140px; flex-shrink: 0;
+}
+.vis-bar-bg {
+  flex: 1; height: 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 3px; overflow: hidden;
+  position: relative;
+}
+.vis-bar-fill {
+  height: 100%; border-radius: 3px;
+  position: relative; overflow: hidden;
+  transition: width 1.2s cubic-bezier(.22,1,.36,1);
+}
+.vis-bar-fill::after {
+  content: '';
+  position: absolute; top: 0; left: -100%; width: 80px; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shine 2.5s ease-in-out infinite;
+}
+@keyframes shine { 0%{left:-100%} 100%{left:200%} }
+.vis-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  width: 48px; text-align: right; flex-shrink: 0;
+}
+
+/* ══════════════ QUICK REF PANEL ══════════════ */
+.quick-ref {
+  position: relative; overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  margin-top: 56px;
+}
+.quick-ref::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--orange), var(--green), var(--purple), var(--cyan));
+  background-size: 400% 100%;
+  animation: rainbow 4s linear infinite;
+}
+@keyframes rainbow { 0%{background-position:0%} 100%{background-position:400%} }
+
+.qr-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap; gap: 10px;
+}
+.qr-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: #fff; letter-spacing: 1px;
+}
+.qr-title span { color: var(--cyan); }
+
+.copy-btn {
+  margin-left: auto;
+  background: rgba(0,245,255,0.1);
+  border: 1px solid var(--border);
+  color: var(--cyan);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  padding: 7px 18px; cursor: pointer;
+  transition: all 0.2s;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  text-transform: uppercase;
+}
+.copy-btn:hover {
+  background: rgba(0,245,255,0.2);
+  box-shadow: var(--glow-c);
+  letter-spacing: 3px;
+}
+
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.qr-col {
+  padding: 20px 24px;
+  border-right: 1px solid var(--border);
+}
+.qr-col:last-child { border-right: none; }
+.qr-col-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--cyan); margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.qr-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.qr-lbl {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; color: var(--muted);
+}
+.qr-val {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px; font-weight: 700;
+  color: var(--green);
+}
+
+/* ══════════════ TIP CARDS ══════════════ */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 14px; margin-top: 16px;
+}
+.tip-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px 20px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  overflow: hidden;
+}
+.tip-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--cyan); opacity: 0;
+  transition: opacity 0.2s;
+}
+.tip-card:hover {
+  border-color: rgba(0,245,255,0.35);
+  box-shadow: var(--glow-c);
+  transform: translateY(-2px);
+}
+.tip-card:hover::before { opacity: 1; }
+.tip-num {
+  position: absolute; top: -9px; left: 14px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 2px;
+  color: var(--cyan); background: var(--bg);
+  padding: 0 6px;
+}
+.tip-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: #fff; margin-bottom: 8px;
+}
+.tip-body { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.tip-body strong { color: var(--cyan); }
+
+/* ══════════════ MISTAKES ══════════════ */
+.mistakes {
+  margin-top: 24px;
+  background: rgba(255,23,68,0.04);
+  border: 1px solid rgba(255,23,68,0.18);
+  padding: 22px 26px;
+}
+.mistakes-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--red); margin-bottom: 16px;
+  letter-spacing: 1px;
+  display: flex; align-items: center; gap: 10px;
+}
+.mistake-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,23,68,0.07);
+  font-size: 13px; color: var(--muted); line-height: 1.5;
+}
+.mistake-x {
+  color: var(--red); flex-shrink: 0;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  margin-top: 1px;
+}
+
+/* ══════════════ 7-DAY PLAN ══════════════ */
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 12px; margin-top: 16px;
+}
+.day-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 18px;
+  position: relative; overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.day-card:hover {
+  box-shadow: 0 0 24px rgba(0,245,255,0.1);
+  transform: translateY(-3px);
+}
+.day-ghost {
+  position: absolute; bottom: -12px; right: -2px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 64px; font-weight: 900;
+  color: rgba(0,245,255,0.04); line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.day-tag {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px; letter-spacing: 3px;
+  color: var(--cyan); background: rgba(0,245,255,0.08);
+  border: 1px solid var(--border);
+  padding: 3px 10px; margin-bottom: 10px;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+}
+.day-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: #fff; margin-bottom: 10px;
+}
+.day-tasks {
+  list-style: none;
+  margin-bottom: 12px;
+}
+.day-tasks li {
+  font-size: 12px; color: var(--muted);
+  padding: 4px 0; line-height: 1.4;
+  padding-left: 14px; position: relative;
+}
+.day-tasks li::before {
+  content: '›'; color: var(--cyan);
+  position: absolute; left: 0;
+  font-size: 14px; line-height: 1.2;
+}
+.day-goal {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 1px;
+  color: var(--green); padding-top: 8px;
+  border-top: 1px solid rgba(0,245,255,0.08);
+}
+
+/* ══════════════ FINAL INSIGHTS ══════════════ */
+.insights-final {
+  display: flex; flex-direction: column; gap: 12px;
+  margin-top: 48px;
+}
+.insight-final {
+  background: rgba(0,245,255,0.03);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--cyan);
+  padding: 16px 20px;
+  font-size: 14px; line-height: 1.7; color: var(--text);
+  transition: border-color 0.2s, background 0.2s;
+}
+.insight-final:hover {
+  background: rgba(0,245,255,0.06);
+  border-color: rgba(0,245,255,0.3);
+}
+.insight-final strong { color: var(--cyan); }
+.insight-final.orange-border { border-left-color: var(--orange); }
+.insight-final.orange-border strong { color: var(--orange); }
+.insight-final.green-border { border-left-color: var(--green); }
+.insight-final.green-border strong { color: var(--green); }
+
+/* ══════════════ FOOTER ══════════════ */
+footer {
+  position: relative; text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid var(--border);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 2px;
+  color: var(--muted);
+  background: var(--panel);
+  overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 280px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  box-shadow: 0 0 10px rgba(0,245,255,0.4);
+}
+.footer-dots { display: flex; justify-content: center; gap: 6px; margin-bottom: 10px; }
+.footer-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--cyan); opacity: 0.4; }
+.footer-dot:nth-child(2) { background: var(--orange); }
+.footer-dot:nth-child(3) { background: var(--green); }
+
+/* ══════════════ ANIMATIONS ══════════════ */
+@keyframes blink-in  { from { opacity: 0; letter-spacing: 10px; } to { opacity: 0.7; } }
+@keyframes slide-down { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: none; } }
+@keyframes fade-in   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse-border {
+  0%,100% { border-color: var(--border); }
+  50% { border-color: rgba(0,245,255,0.4); box-shadow: var(--glow-c); }
+}
+
+/* ══════════════ SCROLL REVEAL ══════════════ */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ══════════════ RESPONSIVE ══════════════ */
+@media (max-width: 600px) {
+  .corner-deco { width: 36px; height: 36px; }
+  .qr-grid { grid-template-columns: 1fr 1fr; }
+  .qr-col { border-right: none; border-bottom: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<!-- Particle Layer -->
+<div id="particles"></div>
+
+<div class="wrapper">
+
+<!-- ════════════════════════════════════════
+     HERO HEADER
+════════════════════════════════════════ -->
+<header>
+  <div class="hero-glow"></div>
+  <div class="corner-deco tl"></div>
+  <div class="corner-deco tr"></div>
+  <div class="corner-deco bl"></div>
+  <div class="corner-deco br"></div>
+
+  <div class="eyebrow">// SENSITIVITY PROFILE · NOTHING 3A · CLASSIFIED //</div>
+  <h1>BGMI <span class="hl">PRO</span><br>SENSITIVITY</h1>
+  <div class="h1-sub">Nothing Phone 3a &nbsp;·&nbsp; 60 FPS &nbsp;·&nbsp; Always-On Gyro &nbsp;·&nbsp; 5-Finger Claw</div>
+
+  <div class="badge-row">
+    <div class="badge">Aggressive Rusher</div>
+    <div class="badge orange">Recoil Focus</div>
+    <div class="badge green">Gyro Tuned</div>
+    <div class="badge">Aim Assist OFF</div>
+    <div class="badge orange">ADS Optimised</div>
+  </div>
+
+  <div class="header-divider"></div>
+</header>
+
+<!-- ════════════════════════════════════════
+     CONTAINER
+════════════════════════════════════════ -->
+<div class="container">
+
+  <!-- ─── DEVICE CARD ─── -->
+  <div class="device-card reveal">
+    <div class="device-card-top-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="device-card-label">DEVICE_PROFILE.SYS</div>
+    </div>
+    <div class="device-card-body">
+      <div class="device-name">Nothing Phone 3a</div>
+      <div class="specs-grid">
+        <div class="spec-block">
+          <div class="spec-key">Display</div>
+          <div class="spec-val">6.77&quot; AMOLED · 120Hz</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Touch Response</div>
+          <div class="spec-val">Capacitive Multi-Touch · 5-Claw Ready</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Gyro Sensor</div>
+          <div class="spec-val">BMI260 · Pro-Grade · Low Drift</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Processor</div>
+          <div class="spec-val">Snapdragon 7s Gen 3 · Stable 60FPS</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Target FPS</div>
+          <div class="spec-val">60 FPS Locked</div>
+        </div>
+        <div class="spec-block">
+          <div class="spec-key">Play Style</div>
+          <div class="spec-val">Aggressive Rusher · Close-Mid Range</div>
+        </div>
+      </div>
+      <div class="insight">
+        ⚡ <strong>Key Insight:</strong> Nothing 3a's BMI260 gyro is pro-grade — same tier as flagship devices. Your old gyro values (320–390%) were <strong>too aggressive</strong>, causing overcorrection and spray deviation. This profile surgically corrects the root cause.
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CAMERA SENSITIVITY ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">📷</div>
+    <div class="sec-text">
+      <div class="sec-title">Camera Sensitivity</div>
+      <div class="sec-sub">FREE-LOOK VIEW SPEED — HIPFIRE &amp; PANNING</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">120%</td><td class="new-v">110%</td><td class="why">Slightly tamed for better hipfire tracking</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">120%</td><td class="new-v">108%</td><td class="why">Reduces over-rotation in close fights</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">89%</td><td class="new-v">85%</td><td class="why">Tighter control on 1x fights</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">44%</td><td class="new-v">42%</td><td class="why">Smoother mid-range panning</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">30%</td><td class="new-v">28%</td><td class="why">Better spray stability</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">22%</td><td class="new-v">20%</td><td class="why">Precise medium-long range</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">15%</td><td class="new-v">13%</td><td class="why">Stable bolt-action tracking</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">11%</td><td class="new-v">10%</td><td class="why">Minimal — snapping only</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Camera vis bars -->
+  <div class="vis-wrap reveal">
+    <div class="vis-header">📊 CAMERA SENSITIVITY VISUAL MAP</div>
+    <div class="vis-rows" id="cam-bars">
+      <div class="vis-row"><div class="vis-label">TPP No Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#00ff88)" data-val="55"></div></div><div class="vis-num" style="color:var(--green)">110%</div></div>
+      <div class="vis-row"><div class="vis-label">FPP No Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#00ff88)" data-val="54"></div></div><div class="vis-num" style="color:var(--green)">108%</div></div>
+      <div class="vis-row"><div class="vis-label">Red Dot / Holo</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#00ff88)" data-val="42.5"></div></div><div class="vis-num" style="color:var(--green)">85%</div></div>
+      <div class="vis-row"><div class="vis-label">2x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="21"></div></div><div class="vis-num" style="color:var(--green)">42%</div></div>
+      <div class="vis-row"><div class="vis-label">3x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#b347ff,#ff4500)" data-val="14"></div></div><div class="vis-num" style="color:var(--green)">28%</div></div>
+      <div class="vis-row"><div class="vis-label">4x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="10"></div></div><div class="vis-num" style="color:var(--green)">20%</div></div>
+      <div class="vis-row"><div class="vis-label">6x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="6.5"></div></div><div class="vis-num" style="color:var(--green)">13%</div></div>
+      <div class="vis-row"><div class="vis-label">8x Scope</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff1744,#ff1744)" data-val="5"></div></div><div class="vis-num" style="color:var(--green)">10%</div></div>
+    </div>
+  </div>
+
+  <!-- ─── ADS SENSITIVITY ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">🎯</div>
+    <div class="sec-text">
+      <div class="sec-title">ADS Sensitivity</div>
+      <div class="sec-sub">AIM-DOWN-SIGHTS SPEED — FIRST SHOT ACCURACY</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">120%</td><td class="new-v">105%</td><td class="why">Prevents overshooting targets on rush</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">120%</td><td class="new-v">105%</td><td class="why">Matches TPP for muscle memory consistency</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">88%</td><td class="new-v">82%</td><td class="why">Tighter 1x recoil management</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">44%</td><td class="new-v">40%</td><td class="why">Clean spray transfers at mid-range</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">29%</td><td class="new-v">26%</td><td class="why">Controlled M416/AKM sprays</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">22%</td><td class="new-v">19%</td><td class="why">Stable 4x taps and short bursts</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">15%</td><td class="new-v">12%</td><td class="why">Precision only — slow and deliberate</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">11%</td><td class="new-v">9%</td><td class="why">Lock-in long range shots</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── GYROSCOPE ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">🌀</div>
+    <div class="sec-text">
+      <div class="sec-title">Gyroscope Sensitivity</div>
+      <div class="sec-sub">GYRO AIM SPEED — MOST CRITICAL SECTION</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">320%</td><td class="new-v">280%</td><td class="why">Less wrist fatigue, more controlled hipfire</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">320%</td><td class="new-v">275%</td><td class="why">Prevents snap overcorrection</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">390%</td><td class="new-v">320%</td><td class="why"><span class="key-fix">⚡ KEY FIX</span> — Was too high, causing recoil bounce</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">195%</td><td class="new-v">165%</td><td class="why">Smoother mid-range spray pulls</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">130%</td><td class="new-v">110%</td><td class="why">Stable gyro recoil pull at 3x</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">98%</td><td class="new-v">82%</td><td class="why">Controlled gyro at 4x, no jitter</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">65%</td><td class="new-v">52%</td><td class="why">Precise micro-adjustments</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">49%</td><td class="new-v">38%</td><td class="why">Near-zero gyro — rely on thumb</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Gyro vis bars -->
+  <div class="vis-wrap reveal">
+    <div class="vis-header">📊 GYRO SENSITIVITY VISUAL MAP — OLD vs NEW</div>
+    <div class="vis-rows" id="gyro-bars">
+      <div class="vis-row"><div class="vis-label">TPP: 320% → 280%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="70"></div></div><div class="vis-num" style="color:var(--green)">280%</div></div>
+      <div class="vis-row"><div class="vis-label">FPP: 320% → 275%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="68.75"></div></div><div class="vis-num" style="color:var(--green)">275%</div></div>
+      <div class="vis-row"><div class="vis-label">Red Dot: 390% → 320%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ffd700)" data-val="80"></div></div><div class="vis-num" style="color:var(--orange)">320%</div></div>
+      <div class="vis-row"><div class="vis-label">2x: 195% → 165%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#00f5ff,#b347ff)" data-val="41.25"></div></div><div class="vis-num" style="color:var(--green)">165%</div></div>
+      <div class="vis-row"><div class="vis-label">3x: 130% → 110%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#b347ff,#ff4500)" data-val="27.5"></div></div><div class="vis-num" style="color:var(--green)">110%</div></div>
+      <div class="vis-row"><div class="vis-label">4x: 98% → 82%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="20.5"></div></div><div class="vis-num" style="color:var(--green)">82%</div></div>
+      <div class="vis-row"><div class="vis-label">6x: 65% → 52%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff4500,#ff1744)" data-val="13"></div></div><div class="vis-num" style="color:var(--green)">52%</div></div>
+      <div class="vis-row"><div class="vis-label">8x: 49% → 38%</div><div class="vis-bar-bg"><div class="vis-bar-fill" style="width:0%;background:linear-gradient(90deg,#ff1744,#ff1744)" data-val="9.5"></div></div><div class="vis-num" style="color:var(--green)">38%</div></div>
+    </div>
+  </div>
+
+  <!-- ─── ADS GYROSCOPE ─── -->
+  <div class="sec-head reveal">
+    <div class="sec-icon">🔫</div>
+    <div class="sec-text">
+      <div class="sec-title">ADS Gyroscope Sensitivity</div>
+      <div class="sec-sub">GYRO WHEN ADS ACTIVE — WHERE YOUR RECOIL FIX LIVES</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="table-wrap reveal">
+    <table>
+      <thead><tr>
+        <th>Scope / Mode</th><th>Old</th><th>✅ New</th><th>Why It's Better</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>TPP No Scope</td><td class="old-v">320%</td><td class="new-v">272%</td><td class="why">Cleaner hipfire ADS transition</td></tr>
+        <tr><td>FPP No Scope</td><td class="old-v">320%</td><td class="new-v">268%</td><td class="why">Consistent feel across perspectives</td></tr>
+        <tr><td>Red Dot / Holo / Iron / Canted</td><td class="old-v">380%</td><td class="new-v">310%</td><td class="why"><span class="key-fix">⚡ KEY FIX</span> — Old value caused vertical recoil spike</td></tr>
+        <tr><td>2x Scope</td><td class="old-v">190%</td><td class="new-v">158%</td><td class="why">Laser spray at 2x now possible</td></tr>
+        <tr><td>3x Scope</td><td class="old-v">127%</td><td class="new-v">106%</td><td class="why">Pull-down gyro works smoothly</td></tr>
+        <tr><td>4x Scope</td><td class="old-v">95%</td><td class="new-v">78%</td><td class="why">Tap-fire accuracy improved</td></tr>
+        <tr><td>6x Scope</td><td class="old-v">63%</td><td class="new-v">50%</td><td class="why">Micro-correction without drift</td></tr>
+        <tr><td>8x Scope</td><td class="old-v">48%</td><td class="new-v">36%</td><td class="why">Stable scope, thumb does the work</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── QUICK REF PANEL ─── -->
+  <div class="quick-ref reveal">
+    <div class="qr-header">
+      <div class="qr-title">◈ <span>Quick Reference</span> — All Values</div>
+      <button class="copy-btn" onclick="copyAll()">📋 COPY ALL</button>
+    </div>
+    <div class="qr-grid">
+      <div class="qr-col">
+        <div class="qr-col-title">📷 Camera</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">110%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">108%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">85%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">42%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">28%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">20%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">13%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">10%</div></div>
+      </div>
+      <div class="qr-col">
+        <div class="qr-col-title">🎯 ADS</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">105%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">105%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">82%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">40%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">26%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">19%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">12%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">9%</div></div>
+      </div>
+      <div class="qr-col">
+        <div class="qr-col-title">🌀 Gyroscope</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">280%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">275%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">320%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">165%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">110%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">82%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">52%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">38%</div></div>
+      </div>
+      <div class="qr-col">
+        <div class="qr-col-title">🔫 ADS Gyro</div>
+        <div class="qr-row"><div class="qr-lbl">TPP No Scope</div><div class="qr-val">272%</div></div>
+        <div class="qr-row"><div class="qr-lbl">FPP No Scope</div><div class="qr-val">268%</div></div>
+        <div class="qr-row"><div class="qr-lbl">Red Dot / Holo</div><div class="qr-val">310%</div></div>
+        <div class="qr-row"><div class="qr-lbl">2x</div><div class="qr-val">158%</div></div>
+        <div class="qr-row"><div class="qr-lbl">3x</div><div class="qr-val">106%</div></div>
+        <div class="qr-row"><div class="qr-lbl">4x</div><div class="qr-val">78%</div></div>
+        <div class="qr-row"><div class="qr-lbl">6x</div><div class="qr-val">50%</div></div>
+        <div class="qr-row"><div class="qr-lbl">8x</div><div class="qr-val">36%</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── PRO TIPS ─── -->
+  <div class="sec-head reveal" style="margin-top:56px">
+    <div class="sec-icon">🏆</div>
+    <div class="sec-text">
+      <div class="sec-title">Pro Player Secrets</div>
+      <div class="sec-sub">HIDDEN TECHNIQUES TOP PLAYERS USE</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="tips-grid reveal">
+    <div class="tip-card">
+      <span class="tip-num">TIP 01</span>
+      <div class="tip-title">The 70% Gyro Rule</div>
+      <div class="tip-body">Pro players never max out gyro. They keep it at <strong>70–80% of what feels "fast enough"</strong> — this is exactly what we've done here.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 02</span>
+      <div class="tip-title">Gyro Wrist vs Elbow</div>
+      <div class="tip-body">For Always-On gyro at 5-finger claw, use <strong>wrist micro-tilts</strong> not full arm movement — less fatigue, more precision.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 03</span>
+      <div class="tip-title">Red Dot Superiority</div>
+      <div class="tip-body">Always prefer <strong>Red Dot over Holo</strong> in close fights — less visual clutter means better reaction time.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 04</span>
+      <div class="tip-title">Spray Transfer Secret</div>
+      <div class="tip-body">When transferring spray to a new target, <strong>lift gyro tilt to neutral first</strong> then re-engage — prevents wild spray deviation.</div>
+    </div>
+    <div class="tip-card">
+      <span class="tip-num">TIP 05</span>
+      <div class="tip-title">The Recoil Pull Technique</div>
+      <div class="tip-body">Pull your phone <strong>slightly downward physically</strong> while spraying — combines thumb pull-down + gyro pull for near-zero recoil.</div>
+    </div>
+  </div>
+
+  <!-- ─── MISTAKES ─── -->
+  <div class="mistakes reveal">
+    <div class="mistakes-title">⚠ Common Mistakes to Avoid</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Don't change sensitivity mid-match — always test in Training Grounds first</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Never copy pro sensitivity directly — device differences make it useless</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Don't increase gyro when missing — the problem is usually camera, not gyro</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Avoid changing more than 2 values at a time when adjusting</div>
+    <div class="mistake-row"><span class="mistake-x">✕</span> Don't judge the sensitivity in the first 2 days — your brain hasn't adapted yet</div>
+  </div>
+
+  <!-- ─── 7-DAY PLAN ─── -->
+  <div class="sec-head reveal" style="margin-top:56px">
+    <div class="sec-icon">📅</div>
+    <div class="sec-text">
+      <div class="sec-title">7-Day Training Plan</div>
+      <div class="sec-sub">FROM ZERO TO LOCKED-IN MUSCLE MEMORY</div>
+    </div>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="plan-grid reveal">
+    <div class="day-card">
+      <div class="day-ghost">01</div>
+      <div class="day-tag">DAY 01</div>
+      <div class="day-title">Sensitivity Familiarization</div>
+      <ul class="day-tasks">
+        <li>30 min in Training Grounds only</li>
+        <li>Walk around, practice camera movement</li>
+        <li>Get used to new gyro feel — no shooting yet</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Brain adapts to new speed</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">02</div>
+      <div class="day-tag">DAY 02</div>
+      <div class="day-title">Recoil Control Drills</div>
+      <ul class="day-tasks">
+        <li>Fire M416 + AKM at a wall in training</li>
+        <li>Full spray with gyro pull-down technique</li>
+        <li>Repeat 50 sprays per gun</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Consistent vertical spray pattern</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">03</div>
+      <div class="day-tag">DAY 03</div>
+      <div class="day-title">Flick Aim Practice</div>
+      <ul class="day-tasks">
+        <li>Use moving target dummy in training</li>
+        <li>Practice snapping to target with Red Dot</li>
+        <li>20 min flick → 10 min rest → repeat</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Fast first-bullet accuracy</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">04</div>
+      <div class="day-tag">DAY 04</div>
+      <div class="day-title">Close Range Tracking</div>
+      <ul class="day-tasks">
+        <li>Enter TDM (Team Deathmatch)</li>
+        <li>Focus ONLY on tracking moving enemies</li>
+        <li>Don't worry about winning — only smooth aim</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Gyro tracking in real combat</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">05</div>
+      <div class="day-tag">DAY 05</div>
+      <div class="day-title">Spray Transfer Drill</div>
+      <ul class="day-tasks">
+        <li>Line up 3 dummies in training</li>
+        <li>Spray 5 bullets → transfer → repeat</li>
+        <li>Practice the "gyro neutral reset" between targets</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Clean multi-target sprays</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">06</div>
+      <div class="day-tag">DAY 06</div>
+      <div class="day-title">Full Match Application</div>
+      <ul class="day-tasks">
+        <li>Play 3 full matches, aggressive style</li>
+        <li>Note where aim fails — recoil? Flick? Tracking?</li>
+        <li>Make ONE small adjustment if needed (±5% only)</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Real game feel assessment</div>
+    </div>
+    <div class="day-card">
+      <div class="day-ghost">07</div>
+      <div class="day-tag">DAY 07</div>
+      <div class="day-title">Fine Tune &amp; Lock In</div>
+      <ul class="day-tasks">
+        <li>Review performance from Day 6</li>
+        <li>Make final micro-adjustments if needed</li>
+        <li>Play 2 matches to confirm — then LOCK IT</li>
+      </ul>
+      <div class="day-goal">⬥ GOAL: Muscle memory formation begins</div>
+    </div>
+  </div>
+
+  <!-- ─── FINAL INSIGHTS ─── -->
+  <div class="insights-final reveal">
+    <div class="insight-final orange-border">
+      🔑 <strong>Your Biggest Fix:</strong> Reducing gyro from <strong>390% → 320%</strong> on Red Dot/Holo is the single change that will most dramatically improve your recoil control. That one value was the root cause of your spray going wild.
+    </div>
+    <div class="insight-final">
+      ⏱ <strong>Muscle memory takes 21 days minimum</strong> to fully form. The biggest mistake players make is changing sensitivity after just 2–3 days. Trust the process — the results will come.
+    </div>
+    <div class="insight-final green-border">
+      📱 <strong>Nothing 3a Advantage:</strong> Your BMI260 gyro sensor is the same grade used in flagship devices. Combined with this tuned sensitivity, you have a hardware + software edge over most players.
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="footer-dots">
+    <div class="footer-dot"></div>
+    <div class="footer-dot"></div>
+    <div class="footer-dot"></div>
+  </div>
+  SENSITIVITY PROFILE BUILT FOR: Nothing 3a &nbsp;·&nbsp; 60 FPS &nbsp;·&nbsp; Always-On Gyro &nbsp;·&nbsp; 5-Finger Claw &nbsp;·&nbsp; Aggressive Rusher &nbsp;·&nbsp; Recoil Control Focus &nbsp;·&nbsp; Aim Assist OFF
+</footer>
+
+</div><!-- /wrapper -->
+
+<script>
+/* ──────────────────────────────────────
+   PARTICLES
+────────────────────────────────────── */
+(function() {
+  const container = document.getElementById('particles');
+  const colors = ['#00f5ff','#ff4500','#00ff88','#b347ff','#ffd700'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    p.style.cssText = `
+      width:${size}px; height:${size}px;
+      background:${color};
+      left:${Math.random()*100}%;
+      animation-duration:${Math.random()*12+8}s;
+      animation-delay:${Math.random()*10}s;
+      box-shadow: 0 0 ${size*3}px ${color};
+    `;
+    container.appendChild(p);
+  }
+})();
+
+/* ──────────────────────────────────────
+   SCROLL REVEAL
+────────────────────────────────────── */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+/* ──────────────────────────────────────
+   ANIMATED BARS (trigger on scroll)
+────────────────────────────────────── */
+function animateBars(container) {
+  const fills = container.querySelectorAll('.vis-bar-fill');
+  fills.forEach(fill => {
+    const target = parseFloat(fill.dataset.val);
+    fill.style.width = target + '%';
+  });
+}
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      setTimeout(() => animateBars(e.target), 300);
+      barObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.vis-wrap').forEach(el => barObserver.observe(el));
+
+/* ──────────────────────────────────────
+   COPY ALL
+────────────────────────────────────── */
+function copyAll() {
+  const text = `BGMI PRO SENSITIVITY — Nothing 3a
+Aggressive Rusher | 5-Finger | Gyro ON | Aim Assist OFF
+
+━━━ CAMERA ━━━
+TPP No Scope:              110%
+FPP No Scope:              108%
+Red Dot / Holo / Canted:    85%
+2x:                         42%
+3x:                         28%
+4x:                         20%
+6x:                         13%
+8x:                         10%
+
+━━━ ADS ━━━
+TPP No Scope:              105%
+FPP No Scope:              105%
+Red Dot / Holo / Canted:    82%
+2x:                         40%
+3x:                         26%
+4x:                         19%
+6x:                         12%
+8x:                          9%
+
+━━━ GYROSCOPE ━━━
+TPP No Scope:              280%
+FPP No Scope:              275%
+Red Dot / Holo / Canted:   320%
+2x:                        165%
+3x:                        110%
+4x:                         82%
+6x:                         52%
+8x:                         38%
+
+━━━ ADS GYROSCOPE ━━━
+TPP No Scope:              272%
+FPP No Scope:              268%
+Red Dot / Holo / Canted:   310%
+2x:                        158%
+3x:                        106%
+4x:                         78%
+6x:                         50%
+8x:                         36%`;
+
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    const orig = btn.textContent;
+    btn.textContent = '✓ COPIED!';
+    btn.style.color = 'var(--green)';
+    btn.style.borderColor = 'var(--green)';
+    btn.style.boxShadow = '0 0 16px rgba(0,255,136,0.4)';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.color = '';
+      btn.style.borderColor = '';
+      btn.style.boxShadow = '';
+    }, 2500);
+  });
+}
+</script>
+</body>
+</html>
